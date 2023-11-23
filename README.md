@@ -1,2 +1,0 @@
-# Authy
-Authy

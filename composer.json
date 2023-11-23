@@ -1,0 +1,20 @@
+{
+    "name": "votre/nom-package",
+    "description": "Description de votre package",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anjara Valisoa",
+            "email": "mofogasy70@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "8.2.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "NomPackage\\": "src/"
+        }
+    }
+}
