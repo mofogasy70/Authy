@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "NomPackage\\": "src/"
+            "youngdev\\": "src/"
         }
     },
     "version": "1.0.0"

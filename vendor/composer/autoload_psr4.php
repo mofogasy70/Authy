@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'NomPackage\\' => array($baseDir . '/src'),
+    'youngdev\\' => array($baseDir . '/src'),
 );

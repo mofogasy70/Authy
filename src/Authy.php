@@ -1,8 +1,8 @@
 <?php
-namespace Youngdev;
+namespace youngdev;
 class Authy
 {
-    public static function printtsotra() {
-        echo "test du SDK php authy";
+    public function printtsotra() {
+        print("test du SDK php authy");
     }
  }
