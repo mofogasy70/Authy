@@ -1,0 +1,8 @@
+<?php
+namespace authy;
+class Authy
+{
+    public function test() {
+        print("test du SDK php authy");
+    }
+ }
