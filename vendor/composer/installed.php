@@ -1,7 +1,7 @@
 <?php return array(
     'root' => array(
-        'name' => 'votre/nom-package',
-        'pretty_version' => '1.0.0+no-version-set',
+        'name' => 'youngdev/authy',
+        'pretty_version' => '1.0.0',
         'version' => '1.0.0.0',
         'reference' => NULL,
         'type' => 'library',
@@ -10,8 +10,8 @@
         'dev' => true,
     ),
     'versions' => array(
-        'votre/nom-package' => array(
-            'pretty_version' => '1.0.0+no-version-set',
+        'youngdev/authy' => array(
+            'pretty_version' => '1.0.0',
             'version' => '1.0.0.0',
             'reference' => NULL,
             'type' => 'library',
