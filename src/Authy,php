@@ -2,7 +2,7 @@
 namespace Youngdev;
 class Authy
 {
-    public function test() {
+    public static function test() {
         print("test du SDK php authy");
     }
  }
