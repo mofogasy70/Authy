@@ -1,5 +1,5 @@
 <?php
-namespace authy;
+namespace Youngdev;
 class Authy
 {
     public function test() {
