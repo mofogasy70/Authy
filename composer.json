@@ -1,6 +1,6 @@
 {
-    "name": "votre/nom-package",
-    "description": "Description de votre package",
+    "name": "youngdev/authy",
+    "description": "if you like using authy sign in use this sdk",
     "type": "library",
     "license": "MIT",
     "authors": [
