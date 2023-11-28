@@ -1,5 +1,2 @@
 <?php
-require_once('vendor/autoload.php');
-use youngdev\Authy;
-$test=new Authy();
-$test->printtsotra();
+echo "<a href=\"http://localhost:5173/LoginWith/e4f43960-35f5-45cc-8cd5-81b96c075cb7\"></a>";
