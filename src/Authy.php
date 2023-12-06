@@ -1,55 +1,85 @@
 <?php
 namespace youngdev;
- class AuthyClient{
+use Exception;
+class AuthyClient {
     private $AppId;
     private $ApiKey;
-    private $Url_Redirection;
     private $accessToken;
-    public function __construct($AppId,$ApiKey) {
-            $this->AppId = $AppId;
-            $this->ApiKey = $ApiKey;    
+
+    const AUTH_URL = "http://localhost:5173/LoginWith/";
+    const EXCHANGE_TOKEN_URL = "http://localhost:5000/ExchangeToken";
+
+    public function __construct($AppId, $ApiKey) {
+        $this->AppId = $AppId;
+        $this->ApiKey = $ApiKey;
     }
-    public function getUserData($accessToken) {
-        $url = "http://192.168.88.17:5000/ExchangeToken";
-        $data = array(
-            'accessToken' => $accessToken,
-        );
+
+    public function getUserData() {
+        try {
+            $this->validateAccessToken();
+
+            $data = http_build_query([
+                'accessToken' => $this->getaccessToken(),
+            ]);
+            $response = $this->performCurlRequest(self::EXCHANGE_TOKEN_URL, $data);
+            return $response;
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function test() {
+        echo "test";
+    }
+
+    public function getUrlAuth() {
+        return self::AUTH_URL . $this->getAppId();
+    }
+
+    public function getAppId() {
+        return $this->AppId;
+    }
+
+    public function setAppId($value) {
+        $this->AppId = $value;
+    }
+
+    public function getApiKey() {
+        return $this->ApiKey;
+    }
+
+    public function setApiKey($value) {
+        $this->ApiKey = $value;
+    }
+
+    public function getAccessToken() {
+        return $this->accessToken;
+    }
+
+    public function setAccessToken($value) {
+        $this->accessToken = $value;
+    }
+
+    private function validateAccessToken() {
+        if ($this->accessToken === null) {
+            throw new Exception("Access token doesn't exist, fetching user data failed", 1);
+        }
+    }
+
+    private function performCurlRequest($url, $data) {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
         $response = curl_exec($ch);
+
         if ($response === false) {
-            echo 'Erreur : ' . curl_error($ch);
+            throw new Exception('cURL Error: ' . curl_error($ch));
         }
+
         curl_close($ch);
-        echo $response;
-    }
-    public function getUrlAuht(){
-        return "http://192.168.88.17:5173/LoginWith/".$this->getAppId();
-    }
-    public function getAppId() {
-        return $this->AppId;
-    }
-    public function setAppId($valeur) {
-        $this->AppId = $valeur;
-    }
-    public function getApiKey() {
-        return $this->ApiKey;
-    }
-    public function setApiKey($valeur) {
-        $this->ApiKey = $valeur;
-    }
-    public function getUrl_Redirection() {
-        return $this->Url_Redirection;
-    }
-    public function setUrl_Redirection($valeur) {
-        $this->Url_Redirection = $valeur;
-    }
-    public function getaccessToken() {
-        return $this->accessToken;
-    }
-    public function setaccessToken($valeur) {
-        $this->accessToken = $valeur;
+
+        return $response;
     }
 }
